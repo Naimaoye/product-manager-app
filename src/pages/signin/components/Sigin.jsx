@@ -3,24 +3,9 @@ import { useToasts } from 'react-toast-notifications';
 import { useHistory } from 'react-router-dom';
 import 'antd/dist/antd.css';
 import './index.css';
-import { Form, Input, Button, Checkbox } from 'antd';
+import { Form, Input, Button } from 'antd';
 import { AuthContext } from '../../../context/auth';
 
-
-const layout = {
-  labelCol: {
-    span: 8,
-  },
-  wrapperCol: {
-    span: 16,
-  },
-};
-const tailLayout = {
-  wrapperCol: {
-    offset: 8,
-    span: 16,
-  },
-};
 
 const Loader = () => (
     <div className="spinner">

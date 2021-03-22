@@ -1,7 +1,7 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Divider, Row, Col } from "antd";
 import { useToasts } from 'react-toast-notifications';
-import {  Button, Card, Modal  } from 'antd';
+import {  Button, Card } from 'antd';
 import { storage } from '../../../firebase';
 import 'antd/dist/antd.css';
 import './index.css';
@@ -23,25 +23,13 @@ export const Dashboard = () => {
   const [comment, setComment] = useState('');
   const [products, setProducts] = useState([]);
   const [isProducts, setIsProducts] = useState(false);
-  const [isModalVisible, setIsModalVisible] = useState(false);
+  
 
   const handleFileChange = e => {
     if(e.target.files[0]){
       setImage(e.target.files[0]);
     }
   }
-
-  const showModal = () => {
-    setIsModalVisible(true);
-  };
-
-  const handleOk = () => {
-    setIsModalVisible(false);
-  };
-
-  const handleCancel = () => {
-    setIsModalVisible(false);
-  };
 
 
   const handleUpload = async () => {
@@ -117,8 +105,7 @@ const handleCommentChange = e => {
   setComment(e.target.value);
 }
 
-
-useEffect(async() => {
+const fetchData = async () => {
   try{
     const user = localStorage.getItem('user');
     const parsedUser = JSON.parse(user);
@@ -142,6 +129,10 @@ useEffect(async() => {
   } catch(e){
     console.log(e);
   }
+}
+
+useEffect(() => {
+  fetchData()
 
 },[]);
 
